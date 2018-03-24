@@ -4,22 +4,10 @@
 """Tests for `revisiondict` package."""
 
 import pytest
+from tests import util_mapping
 
+from revisiondict import RevisionDict
 
-from revisiondict import revisiondict
-
-
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
-
-
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+class RevisionDictMappingTest(util_mapping.TestMappingProtocol):
+  # test compatability with MappingProtocol
+  type2test=RevisionDict

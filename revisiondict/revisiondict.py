@@ -61,10 +61,11 @@ class _Item(collections.namedtuple('_Item', 'key value revision')):
 
 
 class RevisionDict(collections.MutableMapping):
-  def __init__(self):
+  def __init__(self, *args, **kwargs):
     self._items=list() # keeping _Item objects, guaranteed sorted by revision
     self._key_to_index=dict() # dict indexing position of key in self._items
     self._actual_revision=0 # number of actual revision
+    self.update(*args, **kwargs)
     
   def __setitem__(self, key, value):
     """ set value for given key and update the actual revision """
@@ -94,6 +95,22 @@ class RevisionDict(collections.MutableMapping):
     """ return number of items """
     return len(self._items)
   
+  @classmethod
+  def fromkeys(cls, keys, value=None):
+    """ create a new RevisionDict with keys from seq and values set to value """
+    self=cls()
+    for key in keys:
+      self[key]=value
+    return self
+  
+  def copy(self):
+    """ returns a shallow copy of RevisionDict """
+    d=RevisionDict()
+    d._items=self._items.copy()
+    d._key_to_index=self._key_to_index.copy()
+    d._actual_revision=self._actual_revision
+    return d
+
   def key_to_revision(self, key):
     """ get revision when this key was updated last time """
     return self._items[self._key_to_index[key]].revision
