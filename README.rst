@@ -7,8 +7,9 @@ Python RevisionDict
 
 .. image:: https://img.shields.io/travis/semiversus/python-revisiondict.svg
         :target: https://travis-ci.org/semiversus/python-revisiondict
-
-.. image:: https://img.shields.io/github/license/tivvit/python-case-insensitive-dict.svg
+        
+.. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
+        :target: https://en.wikipedia.org/wiki/MIT_License
 
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes.
 
