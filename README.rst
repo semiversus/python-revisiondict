@@ -13,14 +13,21 @@ Python RevisionDict
 
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes.
 
-Features
---------
-
 Additional functionality compared to ``dict()``:
 
 * ``.revision`` - returning the actual revision as integer (starting with 0)
 * ``.key_to_revision(key)`` - return the revision when the given key was changed
 * ``.checkout(start=0)`` - return a dict with changes older than `start`
+
+Install
+~~~~~~~
+
+.. code-block:: python
+
+    pip install revisiondict
+    
+Example
+--------
 
 .. code:: python
 >>> d=RevisionDict()
