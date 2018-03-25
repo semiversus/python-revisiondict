@@ -10,7 +10,7 @@ Python RevisionDict
         
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
-
+        
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes.
 
 Additional functionality compared to ``dict()``:
