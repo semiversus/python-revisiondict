@@ -6,8 +6,8 @@ Python RevisionDict
 .. image:: https://img.shields.io/pypi/v/revisiondict.svg
         :target: https://pypi.python.org/pypi/revisiondict
 
-.. image:: https://img.shields.io/travis/semiversus/revisiondict.svg
-        :target: https://travis-ci.org/semiversus/revisiondict
+.. image:: https://img.shields.io/travis/semiversus/python-revisiondict.svg
+        :target: https://travis-ci.org/semiversus/python-revisiondict
 
 .. image:: https://readthedocs.org/projects/revisiondict/badge/?version=latest
         :target: https://revisiondict.readthedocs.io/en/latest/?badge=latest
