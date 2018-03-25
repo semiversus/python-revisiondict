@@ -44,8 +44,6 @@ Update items:
 ('a', 'c', 'b')
 """
 
-__author__="Guenther Jena"
-
 import collections
 import bisect
 

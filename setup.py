@@ -21,7 +21,7 @@ setup(
     author="Günther Jena",
     author_email='guenther@jena.at',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
@@ -43,7 +43,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/semiversus/revisiondict',
+    url='https://github.com/semiversus/python-revisiondict',
     version='0.1.0',
     zip_safe=False,
 )
