@@ -26,3 +26,4 @@ deploy:
   on:
     tags: true
     repo: semiversus/python-revisiondict
+    python: 3.5
