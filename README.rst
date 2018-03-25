@@ -17,7 +17,7 @@ Additional functionality compared to ``dict()``:
 
 * ``.revision`` - returning the actual revision as integer (starting with 0)
 * ``.key_to_revision(key)`` - return the revision when the given key was changed
-* ``.checkout(start=0)`` - return a dict with changes older than `start`
+* ``.checkout(start=0)`` - return a dict with changes since `start`
 
 Install
 -------
