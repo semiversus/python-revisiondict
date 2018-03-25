@@ -7,6 +7,9 @@ Python RevisionDict
 
 .. image:: https://img.shields.io/travis/semiversus/python-revisiondict.svg
         :target: https://travis-ci.org/semiversus/python-revisiondict
+
+.. image:: https://codecov.io/gh/semiversus/python-revisiondict/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/semiversus/python-revisiondict
         
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
