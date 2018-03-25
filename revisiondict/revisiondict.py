@@ -106,10 +106,13 @@ class RevisionDict(collections.MutableMapping):
   def copy(self):
     """ returns a shallow copy of RevisionDict """
     d=RevisionDict()
-    d._items=self._items.copy()
+    d._items=self._items[:] # make a shallow copy of _items
     d._key_to_index=self._key_to_index.copy()
     d._actual_revision=self._actual_revision
     return d
+  
+  def has_key(self, key):
+    return key in self
 
   def key_to_revision(self, key):
     """ get revision when this key was updated last time """

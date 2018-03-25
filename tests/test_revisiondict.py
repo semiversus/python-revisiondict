@@ -4,7 +4,12 @@
 """Tests for `revisiondict` package."""
 
 import pytest
-from tests import util_mapping
+import sys
+
+if sys.version_info[0]<3:
+  from tests import util_mapping_py2 as util_mapping
+else:
+  from tests import util_mapping_py3 as util_mapping
 
 from revisiondict import RevisionDict
 
