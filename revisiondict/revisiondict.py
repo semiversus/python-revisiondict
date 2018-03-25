@@ -131,7 +131,3 @@ class RevisionDict(collections.MutableMapping):
   def revision(self):
     """ get latest revision """
     return self._actual_revision
-
-if __name__=='__main__':
-  import doctest
-  doctest.testmod()
