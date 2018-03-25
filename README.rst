@@ -16,8 +16,9 @@ RevisionDict works like an ordinary dictionary with additional revision keeping 
 Additional functionality compared to ``dict()``:
 
 * ``.revision`` - returning the actual revision as integer (starting with 0)
+* ``.base_revision`` - revision before oldest item changed (or 0 on empty dict)
 * ``.key_to_revision(key)`` - return the revision when the given key was changed
-* ``.checkout(start=0)`` - return a dict with changes since `start`
+* ``.checkout(start=0)`` - return a dict with changes since ``start``
 
 Install
 -------
@@ -34,6 +35,8 @@ Example
 >>> d=RevisionDict()
 >>> d.revision                    # get revision (is 0 at init)
 0
+>>> d.base_revision               # get revision before oldest change
+0
 
 Adding new items:
 
@@ -42,6 +45,8 @@ Adding new items:
 >>> d['a']=0; d['b']=1; d['c']=2  # make three updates
 >>> d.revision                    # showing 3 changes
 3
+>>> d.base_revision               # get revision before oldest change
+0
 
 Inspecting content of RevisionDict:
 
@@ -62,12 +67,14 @@ Update items:
 
 .. code::python
 
->>> d['b']=3                      # update value of 'b' (was 2 before)
+>>> d['a']=3                      # update value of 'b' (was 2 before)
 >>> d.revision
 4
->>> d.key_to_revision('b')
+>>> d.base_revision
+1
+>>> d.key_to_revision('a')
 4
 >>> d.checkout(3)                 # get all changes starting with rev. 3
-{'b': 3}
+{'a': 3}
 >>> tuple(d.keys())               # iterate over keys (they are sorted by rev.)
-('a', 'c', 'b')
+('b', 'c', 'a')

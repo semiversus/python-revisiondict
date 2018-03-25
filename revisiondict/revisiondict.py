@@ -6,24 +6,29 @@ keeping of changes. Basically the following attribute and two methods are
 important:
 
 * .revision - returning the actual revision as integer (starting with 0)
+* .base_revision - revision before oldest item changed (or 0 on emtpry dict)
 * .key_to_revision(key) - return the revision when the given key was changed
 * .checkout(start=0) - return a dict with changes older than `start`
 
 >>> d=RevisionDict()
 >>> d.revision                    # get revision (is 0 at init)
 0
+>>> d.base_revision               # get revision before oldest change
+0
 
 Adding new items:
 >>> d['a']=0; d['b']=1; d['c']=2  # make three updates
->>> d.revision                    # showing 3 changes
+>>> d.revision                    # get actual revision
 3
+>>> d.base_revision               # get revision before oldest change
+0
 
 Inspecting content of RevisionDict:
 >>> d.checkout()=={'a': 0, 'b': 1, 'c': 2} # get a dictionary with all changes
 True
 >>> d.checkout(2)                 # get all changes starting with rev. 2
 {'c': 2}
->>> d.checkout(3)                 # all changes starting with actual revision
+>>> d.checkout(d.revision)        # all changes starting with actual revision
 {}
 >>> d.key_to_revision('b')        # revision where 'b' was changed last time
 2
@@ -33,15 +38,17 @@ _Item(key='b', value=1, revision=2), \
 _Item(key='c', value=2, revision=3)])
 
 Update items:
->>> d['b']=3                      # update value of 'b' (was 2 before)
+>>> d['a']=3                      # update value of 'b' (was 2 before)
 >>> d.revision
 4
->>> d.key_to_revision('b')
+>>> d.base_revision
+1
+>>> d.key_to_revision('a')
 4
 >>> d.checkout(3)                 # get all changes starting with rev. 3
-{'b': 3}
+{'a': 3}
 >>> tuple(d.keys())               # iterate over keys (they are sorted by rev.)
-('a', 'c', 'b')
+('b', 'c', 'a')
 """
 
 import collections
@@ -110,7 +117,12 @@ class RevisionDict(collections.MutableMapping):
     return d
   
   def has_key(self, key):
+    """ test for presence of key. """
+    # this method is deprecated and only for python2 compatability
     return key in self
+
+  def __repr__(self):
+    return '%s(%r)'%(self.__class__.__name__, self._items)
 
   def key_to_revision(self, key):
     """ get revision when this key was updated last time """
@@ -124,10 +136,12 @@ class RevisionDict(collections.MutableMapping):
       start_index=None
     return dict(((i.key, i.value) for i in self._items[start_index:]))
   
-  def __repr__(self):
-    return '%s(%r)'%(self.__class__.__name__, self._items)
-
   @property
   def revision(self):
     """ get latest revision """
     return self._actual_revision
+  
+  @property
+  def base_revision(self):
+    """ revision before oldest change (or 0 on empty dict)"""
+    return min((item.revision for item in self._items))-1 if self._items else 0
