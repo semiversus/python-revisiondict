@@ -14,7 +14,7 @@ Python RevisionDict
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
         
-RevisionDict works like an ordinary dictionary with additional revision keeping of changes.
+RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order that keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order that keys are *inserted*).
 
 Additional functionality compared to ``dict()``:
 
