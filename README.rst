@@ -14,7 +14,8 @@ Python RevisionDict
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
         
-RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order that keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order that keys are *inserted*).
+RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order that
+keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order that keys are *inserted*).
 
 Additional functionality compared to ``dict()``:
 
@@ -79,5 +80,5 @@ Update items:
 4
 >>> d.checkout(3)                 # get all changes starting with rev. 3
 {'a': 3}
->>> tuple(d.keys())               # iterate over keys (they are sorted by rev.)
+>>> tuple(d.keys())               # iterate over keys (ordered by time of update)
 ('b', 'c', 'a')
