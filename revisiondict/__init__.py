@@ -5,3 +5,5 @@ __email__ = 'guenther@jena.at'
 __version__ = '0.2.0'
 
 from .revisiondict import RevisionDict
+
+__all__ = ['RevisionDict']
