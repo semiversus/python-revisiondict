@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
 """
-RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order that
-keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order that keys are *inserted*).
+RevisionDict works like an ordinary dictionary with additional revision keeping
+of changes. It remembers the order that keys were *updated* (in contrast to the
+``OrderedDict`` which is remembering the order that keys are *inserted*).
 
 Additional functionality compared to ``dict()``:
 
 * ``.revision`` - returning the actual revision as integer (starting with 0)
 * ``.base_revision`` - revision before oldest item changed (or 0 on empty dict)
-* ``.key_to_revision(key)`` - return the revision when the given key was changed
+* ``.key_to_revision(key)`` - return revision when the given key was changed
 * ``.checkout(start=0)`` - return a dict with changes since ``start``
 
 >>> d=RevisionDict()
@@ -49,7 +50,7 @@ Update items:
 4
 >>> d.checkout(3)                 # get all changes starting with rev. 3
 {'a': 3}
->>> tuple(d.keys())               # iterate over keys (ordered by time of update)
+>>> tuple(d.keys())               # iterate over keys ordered by time of update
 ('b', 'c', 'a')
 """
 
