@@ -14,8 +14,8 @@ Python RevisionDict
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
         
-RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order that
-keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order that keys are *inserted*).
+RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order when
+keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order when keys are *inserted*).
 
 Additional functionality compared to ``dict()``:
 
@@ -71,7 +71,7 @@ Update items:
 
 .. code::python
 
->>> d['a']=3                      # update value of 'b' (was 2 before)
+>>> d['a']=3                      # update value of 'a' (was 0 before)
 >>> d.revision
 4
 >>> d.base_revision
