@@ -27,7 +27,7 @@ Additional functionality compared to ``dict()``:
 Install
 -------
 
-.. code-block:: python
+.. code-block:: bash
 
     pip install revisiondict
     
