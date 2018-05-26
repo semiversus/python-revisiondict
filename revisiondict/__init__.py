@@ -2,7 +2,7 @@
 
 __author__ = 'Günther Jena'
 __email__ = 'guenther@jena.at'
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 
 from .revisiondict import RevisionDict
 
