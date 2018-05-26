@@ -17,6 +17,16 @@ Python RevisionDict
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order when
 keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order when keys are *inserted*).
 
+It is revision tracking the overall dictionary, but does not store each earlier value for each key in the dictionary.
+It's basically answering the following questions:
+
+* What is the actual revision number?
+* What changed since revsion number *N*?
+* In which revision has value of key *K* changed the last time?
+
+Use `RevisionDict` to build caching systems, interface multiple clients to a common database,
+publish/subscribe systems,...
+
 Additional functionality compared to ``dict()``:
 
 * ``.revision`` - returning the actual revision as integer (starting with 0)
