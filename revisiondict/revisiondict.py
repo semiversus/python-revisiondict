@@ -54,11 +54,12 @@ Update items:
 ('b', 'c', 'a')
 """
 
-import collections
 import bisect
+from collections import namedtuple
+from collections.abc import MutableMapping
 
 
-class _Item(collections.namedtuple('_Item', 'key value revision')):
+class _Item(namedtuple('_Item', 'key value revision')):
     """ _Item representing a key:value pair with information about the revision
     this update was done.
     """
@@ -68,7 +69,7 @@ class _Item(collections.namedtuple('_Item', 'key value revision')):
         return self.revision < other.revision
 
 
-class RevisionDict(collections.MutableMapping):
+class RevisionDict(MutableMapping):
     def __init__(self, *args, **kwargs):
         self._items = list()  # keep _Item objs, guaranteed sorted by revision
         self._key_to_index = dict()  # dict indexing position of key in _items
