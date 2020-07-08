@@ -6,3 +6,4 @@ codecov==2.0.15
 rstcheck==3.3
 pytest==3.4.2
 pytest-cov==2.5.1
+attrs==19.1.0
