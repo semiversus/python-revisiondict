@@ -10,10 +10,10 @@ Python RevisionDict
 
 .. image:: https://codecov.io/gh/semiversus/python-revisiondict/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/semiversus/python-revisiondict
-        
+
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
-        
+
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order when
 keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order when keys are *inserted*).
 
@@ -40,13 +40,13 @@ Install
 .. code-block:: bash
 
     pip install revisiondict
-    
+
 Example
 -------
 
 .. code::python
-
->>> d=RevisionDict()
+>>> from revisiondict import RevisionDict
+>>> d = RevisionDict()
 >>> d.revision                    # get revision (is 0 at init)
 0
 >>> d.base_revision               # get revision before oldest change

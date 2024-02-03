@@ -8,9 +8,9 @@ import sys
 from revisiondict import RevisionDict
 
 if sys.version_info[0] < 3:
-    from test import util_mapping_py2 as util_mapping
+    from tests import util_mapping_py2 as util_mapping
 else:
-    from test import util_mapping_py3 as util_mapping
+    from tests import util_mapping_py3 as util_mapping
 
 
 class RevisionDictMappingTest(util_mapping.TestMappingProtocol):
