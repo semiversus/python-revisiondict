@@ -2,8 +2,8 @@ from revisiondict import RevisionDict
 
 
 class UniqueRevisionDict(RevisionDict):
-    """ UniqueRevisionDict is a RevisionDict that does not increase the revision when a value is set to the
-        same value as before.
+    """ UniqueRevisionDict is a RevisionDict that does not increase the
+        revision when a value is set to the same value as before.
 
         >>> d = UniqueRevisionDict()
         >>> d['a']=0; d['b']=1; d['c']=2  # make three updates
@@ -18,8 +18,9 @@ class UniqueRevisionDict(RevisionDict):
         >>> d.revision
         4
     """
-    
+
     def __setitem__(self, key, value):
-        if key in self._key_to_index and value == self._items[self._key_to_index[key]].value:
+        if (key in self._key_to_index and
+                value == self._items[self._key_to_index[key]].value):
             return
         RevisionDict.__setitem__(self, key, value)
