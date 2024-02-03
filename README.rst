@@ -45,6 +45,7 @@ Example
 -------
 
 .. code::python
+
 >>> from revisiondict import RevisionDict
 >>> d = RevisionDict()
 >>> d.revision                    # get revision (is 0 at init)
