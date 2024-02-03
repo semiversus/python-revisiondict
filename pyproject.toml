@@ -3,3 +3,6 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=7.0"]
 
 [tool.setuptools_scm]
 write_to = "revisiondict/_version.py"
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --doctest-glob='*.rst'"

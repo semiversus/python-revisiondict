@@ -10,10 +10,10 @@ Python RevisionDict
 
 .. image:: https://codecov.io/gh/semiversus/python-revisiondict/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/semiversus/python-revisiondict
-        
+
 .. image:: https://img.shields.io/github/license/semiversus/python-revisiondict.svg
         :target: https://en.wikipedia.org/wiki/MIT_License
-        
+
 RevisionDict works like an ordinary dictionary with additional revision keeping of changes. It remembers the order when
 keys were *updated* (in contrast to the ``OrderedDict`` which is remembering the order when keys are *inserted*).
 
@@ -40,13 +40,14 @@ Install
 .. code-block:: bash
 
     pip install revisiondict
-    
+
 Example
 -------
 
 .. code::python
 
->>> d=RevisionDict()
+>>> from revisiondict import RevisionDict
+>>> d = RevisionDict()
 >>> d.revision                    # get revision (is 0 at init)
 0
 >>> d.base_revision               # get revision before oldest change
@@ -92,3 +93,31 @@ Update items:
 {'a': 3}
 >>> tuple(d.keys())               # iterate over keys (ordered by time of update)
 ('b', 'c', 'a')
+
+
+`UniqueRevisionDict`
+--------------------
+
+`UniqueRevisionDict` is a subclass of `RevisionDict` which does not create a new revision, when an element is
+updated with the same value.
+
+.. code::python
+
+>>> from revisiondict import UniqueRevisionDict
+>>> d = UniqueRevisionDict(a=0)
+>>> d.revision
+1
+
+>>> d['a']=0  # value is equal to the previous one
+>>> d.revision
+1
+
+>>> d['a']=False  # value is still equal as 0 == False
+>>> d.revision
+1
+
+>>> d['a']=100  # a new value is set, so revision is increased
+>>> d.revision
+2
+
+"""

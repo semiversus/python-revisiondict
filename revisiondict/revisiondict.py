@@ -70,9 +70,10 @@ class _Item(namedtuple('_Item', 'key value revision')):
 
 
 class RevisionDict(MutableMapping):
+    """ Implementation of a dictionary with additional revision keeping """
     def __init__(self, *args, **kwargs):
-        self._items = list()  # keep _Item objs, guaranteed sorted by revision
-        self._key_to_index = dict()  # dict indexing position of key in _items
+        self._items = []  # keep _Item objs, guaranteed sorted by revision
+        self._key_to_index = {}  # dict indexing position of key in _items
         self._actual_revision = 0  # number of actual revision
         self.update(*args, **kwargs)
 
@@ -114,11 +115,12 @@ class RevisionDict(MutableMapping):
 
     def copy(self):
         """ returns a shallow copy of RevisionDict """
-        d = RevisionDict()
-        d._items = self._items[:]  # make a shallow copy of _items
-        d._key_to_index = self._key_to_index.copy()
-        d._actual_revision = self._actual_revision
-        return d
+        # pylint: disable=protected-access
+        new_dict = type(self)()
+        new_dict._items = self._items[:]  # make a shallow copy of _items
+        new_dict._key_to_index = self._key_to_index.copy()
+        new_dict._actual_revision = self._actual_revision
+        return new_dict
 
     def has_key(self, key):
         """ test for presence of key. """
@@ -126,7 +128,7 @@ class RevisionDict(MutableMapping):
         return key in self
 
     def __repr__(self):
-        return '%s(%r)' % (self.__class__.__name__, self._items)
+        return f'{self.__class__.__name__}({self._items!r})'
 
     def key_to_revision(self, key):
         """ get revision when this key was updated last time """
