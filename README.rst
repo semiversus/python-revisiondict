@@ -119,5 +119,3 @@ updated with the same value.
 >>> d['a']=100  # a new value is set, so revision is increased
 >>> d.revision
 2
-
-"""
