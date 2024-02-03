@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+""" RevisionDict works like an ordinary dictionary with "
+                "additional revision keeping of changes.
+"""
 
 __author__ = 'Günther Jena'
 __email__ = 'guenther@jena.at'

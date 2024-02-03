@@ -1,3 +1,5 @@
+""" Implementation of UniqueRevisionDict """
+
 from revisiondict import RevisionDict
 
 
