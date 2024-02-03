@@ -116,7 +116,7 @@ class RevisionDict(MutableMapping):
     def copy(self):
         """ returns a shallow copy of RevisionDict """
         # pylint: disable=protected-access
-        new_dict = RevisionDict()
+        new_dict = type(self)()
         new_dict._items = self._items[:]  # make a shallow copy of _items
         new_dict._key_to_index = self._key_to_index.copy()
         new_dict._actual_revision = self._actual_revision

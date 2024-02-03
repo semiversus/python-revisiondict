@@ -93,3 +93,31 @@ Update items:
 {'a': 3}
 >>> tuple(d.keys())               # iterate over keys (ordered by time of update)
 ('b', 'c', 'a')
+
+
+`UniqueRevisionDict`
+--------------------
+
+`UniqueRevisionDict` is a subclass of `RevisionDict` which does not create a new revision, when an element is
+updated with the same value.
+
+.. code::python
+
+>>> from revisiondict import UniqueRevisionDict
+>>> d = UniqueRevisionDict(a=0)
+>>> d.revision
+1
+
+>>> d['a']=0  # value is equal to the previous one
+>>> d.revision
+1
+
+>>> d['a']=False  # value is still equal as 0 == False
+>>> d.revision
+1
+
+>>> d['a']=100  # a new value is set, so revision is increased
+>>> d.revision
+2
+
+"""
