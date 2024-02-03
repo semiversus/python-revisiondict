@@ -5,17 +5,13 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
-    readme = readme_file.read()
 
-requirements = []
+with open('README.rst', 'rb') as readme_file:
+    readme = readme_file.read().decode('utf-8')
 
-setup_requirements = ['pytest-runner', ]
-
-test_requirements = ['pytest', 'pytest-cov']
 
 setup(
-    author="Günther Jena",
+    author='Günther Jena',
     author_email='guenther@jena.at',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -27,20 +23,19 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
     description="RevisionDict works like an ordinary dictionary with " +
                 "additional revision keeping of changes.",
-    install_requires=requirements,
-    license="MIT license",
+    license='MIT license',
     long_description=readme,
     include_package_data=True,
     keywords='dict revision versioning',
     name='revisiondict',
-    packages=find_packages(include=['revisiondict']),
-    setup_requires=setup_requirements,
-    test_suite='tests',
-    tests_require=test_requirements,
+    packages=find_packages(include=['revisiondict*']),
     url='https://github.com/semiversus/python-revisiondict',
-    version='1.0.0',
     zip_safe=False,
 )
